@@ -1,0 +1,299 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+ <style>
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+#myDiv {
+  display: none;
+  text-align: center;
+}
+ #second {background-color:yellow;
+		  width:200%;
+		  background-size:cover;
+		  margin-left:-0.6%;}
+		  
+	
+ #first {width:200%;
+			background-size:cover;
+			height : 30%;
+			font-size:30px;
+			margin-top:-3%;
+			margin-left:-0.6%;
+			text-transform:uppercase;}
+ 
+ #third {background-color:#212F3D;
+		  width:200%;
+		  background-size:cover;
+		  margin-left:-0.6%;}
+		  
+ #newgame {position:relative;
+			left:20%}
+		  
+ <!--#box1 { position:relative;
+ top: 40px;
+ left:300px;
+ width:100px;
+ height:100px;
+ border: 1px solid red;*/}
+ 
+  #box2 { position:relative;
+  top:-60px;
+  left:700px;
+width:100px;
+ height:100px;
+ border: 1px solid red;}
+ 
+  #box3 { position:relative;
+  top:0px;
+  left:300px;
+  width:100px;
+ height:100px;
+ border: 1px solid red;}
+ 
+  #box4 { 
+  position:relative;
+  top:-110px;
+  left:700px;
+  width:100px;
+ height:100px;
+ border: 1px solid red;}-->
+ 
+ .box {
+	width:9%;
+	height:6%;
+	background: purple;
+	border: 1px solid red;
+	padding-bottom:10%;
+	margin: 1.66%;
+	border-radius: 15%;
+	display:inline-block;
+	}
+}
+
+
+
+</style>
+</head>
+<body onload="myFunction()">
+<div id="loader">
+</div>
+<div id="time1" style="position:absolute; top:10%; left:40%; font-size:50px; color:blue;font-family:Courier">LOADING...</div>
+ <div id="first">
+ <h1 class="one" style="font-family: Courier New";>WELCOME TO ABHINAV'S GAME<h1>
+ <div id="s1" style = "font-family: Comic Sans MS";></div>
+ <h4 style="font-family: Tangerine";> Instructions: Find the colour matching the given RGB code.</h4>
+ </div>
+ 
+ <div id="second">
+  <button id="newgame" style="font-size:25px";>New Game</button>
+   <span id="result" style="font-size:30px";></span>
+ </div>
+   
+ <div id="third">
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+  </div>
+  
+  <script>
+  var myVar;
+
+function myFunction() {
+	hidePage();
+    myVar = setTimeout(showPage, 2000);
+}
+function hidePage() {
+  document.getElementById("loader").style.display = "block";
+  document.getElementById("time1").style.display = "block";
+  document.getElementById("first").style.display = "none";
+  document.getElementById("second").style.display = "none";
+  document.getElementById("third").style.display = "none";
+  
+}
+
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("time1").style.display = "none";
+  document.getElementById("first").style.display = "block";
+  document.getElementById("second").style.display = "block";
+  document.getElementById("third").style.display = "block";
+  
+}
+  var rd = document.querySelector("#result");
+  var ng = document.querySelector("#newgame");
+  var pickedColor;
+  
+  /*var t = [];
+ t[0] = document.querySelector("#box1");
+ t[1] = document.querySelector("#box2");
+ t[2] = document.querySelector("#box3");
+ t[3] = document.querySelector("#box4");*/
+ 
+ var bo = document.querySelectorAll(".box");
+ 
+  function randomcolour() {
+  var a = Math.floor(Math.random()*256);
+  var b = Math.floor(Math.random()*256);
+  var c = Math.floor(Math.random()*256);
+  return 'rgb(' + a + ',' + b + ',' +c + ')';}
+  
+  var d = document.querySelector("#first");
+  d.style.backgroundColor = randomcolour();
+  
+  
+  //backcolour();
+  //var a = [];
+  var b = [];
+  
+  
+  
+ // a[0] = document.querySelector("#box1");
+  bo[0].style.backgroundColor = randomcolour();
+  b[0]=bo[0].style.backgroundColor;
+  //a[1] = document.querySelector("#box2");
+  bo[1].style.backgroundColor = randomcolour();
+  b[1]=bo[1].style.backgroundColor;
+  //a[2]= document.querySelector("#box3");
+  bo[2].style.backgroundColor = randomcolour();
+  b[2]=bo[2].style.backgroundColor;
+  //a[3] = document.querySelector("#box4");
+  bo[3].style.backgroundColor = randomcolour();
+  b[3]=bo[3].style.backgroundColor;
+  
+  var h = document.querySelector("#s1");
+  h.innerHTML = b[Math.floor(Math.random()*4)];
+  
+   pickedColor = h.innerHTML;
+  
+  
+  /*function play(){
+  for(var i=0;i<4;i++){
+  a[i].addEventListener("click",function(){
+  var cc = this.style.backgroundColor;
+  console.log(cc==pc);
+  console.log(cc);
+  console.log(pc);
+  if(cc==pc){
+  rd.innerHTML = "Correct";
+  ng.innerHTML = "Play Again?";
+  }
+  
+  else{
+  rd.innerHTML = "Try Again";
+  this.style.backgroundColor = #212F3D;
+  }
+  });
+  }}
+  */
+  //play();
+  /*
+ function reset() {
+ backcolour();}*/
+ 
+ function setupSquares(){
+	for(var i = 0; i < 4; i++){
+	
+		bo[i].addEventListener("click", function(){
+			
+			var clickedColor = this.style.backgroundColor;
+			console.log(clickedColor===pickedColor)
+			console.log(clickedColor);
+			console.log(pickedColor)
+			if(clickedColor === pickedColor){
+				
+				rd.textContent = "Correct!";
+				ng.textContent = "Play Again?"
+				for(i=0;i<4;i++)
+				bo[i].style.backgroundColor=pickedColor;
+				d.style.backgroundColor=pickedColor;
+			} else {
+				this.style.backgroundColor= "#212F3D";
+				this.style.border ="0px solid red";
+				rd.textContent = "Try Again"
+			}
+		});
+	}
+}
+setupSquares();
+
+function reset () {
+//backcolour();
+//allot();
+var d = document.querySelector("#first");
+  d.style.backgroundColor = randomcolour();
+// a[0] = document.querySelector("#box1");
+  bo[0].style.backgroundColor = randomcolour();
+  b[0]=bo[0].style.backgroundColor;
+  //a[1] = document.querySelector("#box2");
+  bo[1].style.backgroundColor = randomcolour();
+  b[1]=bo[1].style.backgroundColor;
+  //a[2]= document.querySelector("#box3");
+  bo[2].style.backgroundColor = randomcolour();
+  b[2]=bo[2].style.backgroundColor;
+  //a[3] = document.querySelector("#box4");
+  bo[3].style.backgroundColor = randomcolour();
+  b[3]=bo[3].style.backgroundColor;
+  
+  var h = document.querySelector("#s1");
+  h.innerHTML = b[Math.floor(Math.random()*4)]
+  
+   pickedColor = h.innerHTML;
+setupSquares();
+ng.textContent = "New Game";
+rd.textContent = " ";}
+
+ng.addEventListener("click", function(){
+	reset();
+});
+
+  </script>
+  
+ </body>
+ </html>
